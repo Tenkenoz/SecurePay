@@ -1,16 +1,11 @@
 /**
  * NotificationService — Responsabilidad Única: Envío de Notificaciones.
- * 
- * Principio SRP: Este servicio SOLO emite notificaciones (simuladas por consola).
- *                En producción, este módulo se reemplazaría por un cliente de email/SMS
- *                sin afectar ningún otro servicio (Open/Closed Principle).
+ * Principio SRP
  */
 class NotificationService {
-  /**
-   * Envía una notificación de débito al emisor de la transferencia.
-   * @param {Object} sender - Objeto de cuenta emisora con email, accountAlpha y balance.
-   * @param {number} amount - Monto debitado.
-   */
+
+  // Envía una notificación de débito al emisor de la transferencia.
+
   notifyDebit(sender, amount) {
     console.log(`\n--- [EMAIL OUTBOX] Enviando correo de confirmación de débito ---`);
     console.log(`Para: ${sender.email}`);
@@ -20,12 +15,8 @@ class NotificationService {
     console.log(`------------------------------------------------------------\n`);
   }
 
-  /**
-   * Envía una notificación de crédito al receptor de la transferencia.
-   * @param {Object} receiver - Objeto de cuenta receptora con email, accountAlpha y balance.
-   * @param {string} fromAccountId - ID de la cuenta que originó la transferencia.
-   * @param {number} amount - Monto acreditado.
-   */
+
+  //Envía una notificación de crédito al receptor de la transferencia.
   notifyCredit(receiver, fromAccountId, amount) {
     console.log(`\n--- [EMAIL OUTBOX] Enviando correo de recepción de crédito ---`);
     console.log(`Para: ${receiver.email}`);

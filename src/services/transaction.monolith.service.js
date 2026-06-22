@@ -1,18 +1,8 @@
 /**
  * TransactionService — Orquestador de Transferencias Financieras.
- * 
  * Refactorizado aplicando principios SOLID:
- * 
- * SRP (Single Responsibility Principle):
- *   La lógica previamente monolítica ha sido segregada en servicios especializados:
- *   - ValidationService: valida cuentas y montos.
- *   - LedgerService: ejecuta movimientos contables y persiste registros.
- *   - NotificationService: emite notificaciones al emisor y receptor.
- * 
- * DIP (Dependency Inversion Principle):
- *   Este controlador NO instancia sus dependencias internamente. Los servicios de bajo
- *   nivel son inyectados a través del constructor, permitiendo sustituirlos por mocks
- *   o implementaciones alternativas sin modificar este módulo.
+ * SRP (Single Responsibility Principle)
+ * DIP (Dependency Inversion Principle)
  */
 
 const ValidationService = require('./validation.service');
@@ -33,9 +23,9 @@ const transactionsHistory = [];
  */
 class TransactionService {
   /**
-   * @param {ValidationService} validationService - Servicio de validación de reglas de negocio.
-   * @param {LedgerService} ledgerService - Servicio de gestión contable y persistencia.
-   * @param {NotificationService} notificationService - Servicio de notificaciones.
+   *validationService - Servicio de validación de reglas de negocio.
+   *ledgerService - Servicio de gestión contable y persistencia.
+   *notificationService - Servicio de notificaciones.
    */
   constructor(validationService, ledgerService, notificationService) {
     this.validationService = validationService;
@@ -46,11 +36,10 @@ class TransactionService {
   /**
    * Orquesta el flujo completo de una transferencia bancaria delegando
    * cada responsabilidad al servicio especializado correspondiente.
-   * 
-   * @param {string} fromAccountId - ID de la cuenta origen.
-   * @param {string} toAccountId - ID de la cuenta destino.
-   * @param {number} amount - Monto a transferir.
-   * @returns {Object} Resultado de la transacción.
+   * fromAccountId - ID de la cuenta origen.
+   * toAccountId - ID de la cuenta destino.
+   * amount - Monto a transferir.
+   * Resultado de la transacción.
    */
   executeTransfer(fromAccountId, toAccountId, amount) {
     // Delegar validación al ValidationService (SRP)
@@ -76,15 +65,14 @@ class TransactionService {
 
   /**
    * Obtiene el saldo actual de una cuenta, delegando al LedgerService.
-   * @param {string} accountId - ID de la cuenta a consultar.
-   * @returns {Object} Información de saldo de la cuenta.
+   *accountId - ID de la cuenta a consultar.
+   *Información de saldo de la cuenta.
    */
   getAccountBalance(accountId) {
     return this.ledgerService.getAccountInfo(accountId);
   }
 }
 
-// --- Composición de dependencias (Composition Root) ---
 // Las dependencias concretas se construyen aquí y se inyectan al orquestador.
 const validationService = new ValidationService(usersDb);
 const ledgerService = new LedgerService(usersDb, transactionsHistory);
