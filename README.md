@@ -46,19 +46,19 @@ TransactionService (Orquestador)
 
 ### Login exitoso (token generado)
 
-![alt text](image.png)
+![Login exitoso - token generado](Capturas/image.png)
 
 ---
 
 ### Acceso válido con token activo
 
-![alt text](image-1.png)
+![Acceso válido con token activo - 200 OK](Capturas/image-1.png)
 
 ---
 
 ### Token expirado (403)
 
-![alt text](image-2.png)
+![Token expirado - 403 TOKEN_EXPIRED](Capturas/image-2.png)
 ---
 
 ## Observabilidad con Sentry
@@ -72,17 +72,17 @@ TransactionService (Orquestador)
 
 ### Creacion del proyecto en Sentry
 
-![alt text](image-6.png)
+![Proyecto configurado en Sentry](Capturas/image-6.png)
 
 ### Error 500 operacional en Postman
 
-![alt text](image-3.png)
+![Error 500 operacional en Postman](Capturas/image-3.png)
 ---
 
 ### Panel Sentry con el error capturado
 
-![alt text](image-4.png)
-![alt text](image-5.png)
+![Error capturado en Sentry Dashboard](Capturas/image-4.png)
+![Tags de usuario en Sentry - userId y fromAccount](Capturas/image-5.png)
 ---
 
 ## 🚀 Instrucciones de ejecución
