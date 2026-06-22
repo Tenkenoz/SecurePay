@@ -44,7 +44,7 @@ function authMiddleware(req, res, next) {
     console.warn(`[AUTH] Token inválido: ${error.message}`);
     return res.status(401).json({
       error: 'Token inválido',
-      message: 'El token no es auténtico o está malformado.',
+      message: 'El token no es auténtico o esta muy mal formado.',
       code: 'TOKEN_INVALID'
     });
   }
