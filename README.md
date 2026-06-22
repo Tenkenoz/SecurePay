@@ -67,8 +67,8 @@ TransactionService (Orquestador)
 
 | Tipo de error | Código HTTP | Reporta a Sentry |
 |---|---|---|
-| Token malformado / expirado | 401 / 403 | ❌ NO (error lógico esperado) |
-| Fallo de conexión al clúster de datos | 500 | ✅ SÍ (error operacional) |
+| Token malformado / expirado | 401 / 403 | error lógico esperado |
+| Fallo de conexión al clúster de datos | 500 | error operacional |
 
 ### Creacion del proyecto en Sentry
 
@@ -111,5 +111,5 @@ node index.js
 | Método | Endpoint | Descripción | Auth requerida |
 |---|---|---|---|
 | POST | `/v1/auth/login` | Genera token JWT RS256 | No |
-| GET | `/v1/account-alpha/balance?accountId=ACC-12345` | Consulta saldo | ✅ Bearer Token |
-| POST | `/v1/transfer-beta/execute` | Ejecuta transferencia (dispara error 500) | ✅ Bearer Token |
+| GET | `/v1/account-alpha/balance?accountId=ACC-12345` | Consulta saldo |  Bearer Token |
+| POST | `/v1/transfer-beta/execute` | Ejecuta transferencia (dispara error 500) | Bearer Token |
