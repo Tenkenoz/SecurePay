@@ -2,6 +2,7 @@
 **SecurePay — Bitácora de Evaluación Parcial**  
 **Departamento de Ciencias de la Computación | Ingeniería de Software**  
 **Asignatura:** Aplicaciones Distribuidas 
+
 **Nombre:** Erick Obando    
 
 ---
