@@ -9,7 +9,7 @@ const transactionService = require('../services/transaction.monolith.service');
 function getBalance(req, res) {
   try {
     const accountId = req.query.accountId;
-    
+
     if (!accountId) {
       return res.status(400).json({
         error: 'Petición incorrecta',

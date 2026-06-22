@@ -14,7 +14,7 @@ function executeTransfer(req, res, next) {
 
   // Obtener userId del JWT para adjuntarlo como tag en Sentry
   const userId = req.user ? req.user.sub : 'desconocido';
-  const errorOperacional = new Error("Conexión interrumpida con el Clúster de Datos SecurePay");
+  const errorOperacional = new Error("Conexión interrumpida con el Clúster de Datos SecurePay, datos enviaados a Sentry");
 
   // Reportar a Sentry con tags personalizados antes de propagar el error
   Sentry.withScope((scope) => {
