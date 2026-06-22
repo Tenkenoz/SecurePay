@@ -1,21 +1,18 @@
-/**
- * LedgerService — Responsabilidad Única: Gestión del Libro Contable (Ledger).
- * Principio SRP, Principio DIP
- */
+// LedgerService — Solo ejecuta movimientos contables y persiste registros (SRP)
+// Recibe usersDb y transactionsHistory como dependencias inyectadas (DIP)
 class LedgerService {
   constructor(usersDb, transactionsHistory) {
     this.usersDb = usersDb;
     this.transactionsHistory = transactionsHistory;
   }
 
-  //Ejecuta la deducción del emisor y la acreditación al receptor.
+  // Aplica el débito al emisor y el crédito al receptor
   applyTransfer(sender, receiver, amount) {
     sender.balance -= amount;
     receiver.balance += amount;
   }
 
-
-  // Crea y persiste el registro de la transacción en el historial.
+  // Crea y guarda el registro de la transacción en el historial
   recordTransaction(fromAccountId, toAccountId, amount) {
     const newTransaction = {
       transactionId: `TX-${Date.now()}-${Math.random().toString(36).substr(2, 9).toUpperCase()}`,
@@ -29,8 +26,7 @@ class LedgerService {
     return newTransaction;
   }
 
-
-  //Obtiene el saldo e información de una cuenta por su ID.
+  // Obtiene el saldo e información de una cuenta
   getAccountInfo(accountId) {
     const account = this.usersDb.find(u => u.accountAlpha === accountId);
     if (!account) {

@@ -1,14 +1,11 @@
-/**
- * ValidationService — Responsabilidad Única: Validación de Reglas de Negocio Financiero.
- * Principio SRP y Principio DIP
- */
+// ValidationService — Solo valida reglas de negocio financiero (SRP)
+// Recibe usersDb como dependencia inyectada (DIP)
 class ValidationService {
   constructor(usersDb) {
     this.usersDb = usersDb;
   }
 
-
-  //Verifica que la cuenta origen exista en la base de datos.
+  // Verifica que la cuenta origen exista
   validateSenderAccount(accountId) {
     const sender = this.usersDb.find(u => u.accountAlpha === accountId);
     if (!sender) {
@@ -17,8 +14,7 @@ class ValidationService {
     return sender;
   }
 
-
-  //Verifica que la cuenta destino exista en la base de datos.
+  // Verifica que la cuenta destino exista
   validateReceiverAccount(accountId) {
     const receiver = this.usersDb.find(u => u.accountAlpha === accountId);
     if (!receiver) {
@@ -27,8 +23,7 @@ class ValidationService {
     return receiver;
   }
 
-
-  //Verifica que el monto sea positivo y que el emisor tenga saldo suficiente.
+  // Verifica que el monto sea positivo y el saldo sea suficiente
   validateTransferAmount(sender, amount) {
     if (amount <= 0) {
       throw new Error('Error de validación: El monto a transferir debe ser mayor a cero.');

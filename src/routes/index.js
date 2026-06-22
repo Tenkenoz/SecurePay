@@ -1,10 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
+const authRoutes = require('./auth.routes');
 const accountRoutes = require('./account.routes');
 const transferRoutes = require('./transfer.routes');
 
-// Agrupar rutas de módulos
+// Rutas de autenticación (sin middleware de auth — genera el token)
+router.use('/auth', authRoutes);
+
+// Rutas protegidas por middleware JWT RS256
 router.use('/account-alpha', accountRoutes);
 router.use('/transfer-beta', transferRoutes);
 
