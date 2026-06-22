@@ -1,9 +1,8 @@
-# 🏦 Fintech SecurePay — Bitácora de Evaluación Parcial
-
-**Universidad de las Fuerzas Armadas ESPE**  
+# Universidad de las Fuerzas Armadas ESPE
+**SecurePay — Bitácora de Evaluación Parcial**  
 **Departamento de Ciencias de la Computación | Ingeniería de Software**  
 **Asignatura:** Aplicaciones Distribuidas 
-**Estudiante:** Erick Pobando    
+**Nombre:** Erick Obando    
 
 ---
 
